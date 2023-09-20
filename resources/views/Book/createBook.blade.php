@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrar Libro</title>
 </head>
 
 <body>
 
     <form action="/book" method="post">
+        @csrf
         <label for="ISBN">IBSN:</label>
         <input type="text" id="ISBN" name="ISBN">
         <br>
