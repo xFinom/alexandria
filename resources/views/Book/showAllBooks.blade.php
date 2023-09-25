@@ -11,6 +11,7 @@
 
 <table>
     <tr>
+        <th>ID</th>
         <th>ISBN</th>
         <th>Title</th>
         <th>Edition</th>
@@ -20,6 +21,7 @@
     </tr>
     @foreach($books as $book)
         <tr>
+            <td> <a href="/book/{{$book->id}}">{{$book->id}}</a></td>
             <td>{{$book->ISBN}}</td>
             <td>{{$book->title}}</td>
             <td>{{$book->edition}}</td>

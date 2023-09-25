@@ -28,7 +28,6 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-
         $book = new Book();
 
         $book->ISBN = $request->ISBN;
@@ -48,7 +47,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('Book/showBook', ['book' => Book::find($book->id)]);
     }
 
     /**
@@ -64,16 +63,14 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $updated_book = Book::find($book->id);
+        $book->ISBN = $request->ISBN;
+        $book->title = $request->title;
+        $book->edition = $request->edition;
+        $book->pages = $request->pages;
+        $book->author = $request->author;
+        $book->publisher = $request->publisher;
 
-        $updated_book->ISBN = $request->ISBN;
-        $updated_book->title = $request->title;
-        $updated_book->author = $request->author;
-        $updated_book->pages = $request->pages;
-        $updated_book->edition = $request->edition;
-        $updated_book->publisher = $request->publisher;
-
-        $updated_book->save();
+        $book->save();
 
         return redirect("/book");
     }
@@ -83,6 +80,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        Book::destroy($book->id);
+
+        return redirect("/book");
     }
 }

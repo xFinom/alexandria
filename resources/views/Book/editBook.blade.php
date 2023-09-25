@@ -9,9 +9,10 @@
 
 <body>
 
-<form action="/book" method="post">
+<form action="/book/{{$book->id}}" method="POST">
+    @method('PATCH')
     @csrf
-
+    <input type="hidden" name="_method" value="PATCH">
     <label for="ISBN">IBSN:</label>
     <input type="text" id="ISBN" name="ISBN" value={{$book->ISBN}}>
     <br>
