@@ -28,6 +28,15 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'ISBN' => 'required',
+            'title' => 'required',
+            'edition' => 'required',
+            'pages' => 'required',
+            'author' => 'required',
+            'publisher' => 'required',
+        ]);
+
         $book = new Book();
 
         $book->ISBN = $request->ISBN;
@@ -63,6 +72,15 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
+        $request->validate([
+            'ISBN' => 'required',
+            'title' => 'required',
+            'edition' => 'required',
+            'pages' => 'required',
+            'author' => 'required',
+            'publisher' => 'required',
+        ]);
+
         $book->ISBN = $request->ISBN;
         $book->title = $request->title;
         $book->edition = $request->edition;
@@ -72,7 +90,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect("/book");
+        return redirect()->route('book.index');
     }
 
     /**
@@ -80,8 +98,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        Book::destroy($book->id);
+        $book->delete();
 
-        return redirect("/book");
+        return redirect()->route('book.index');
     }
 }

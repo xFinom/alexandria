@@ -9,32 +9,42 @@
 
 <body>
 
-<form action="/book/{{$book->id}}" method="POST">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<form action="{{ route('book.update', $book) }}" method="POST">
     @method('PATCH')
     @csrf
     <input type="hidden" name="_method" value="PATCH">
     <label for="ISBN">IBSN:</label>
-    <input type="text" id="ISBN" name="ISBN" value={{$book->ISBN}}>
+    <input type="text" id="ISBN" name="ISBN" value={{old('ISBN') ?? $book->ISBN}}>
     <br>
     <br>
     <label for="title">Title:</label>
-    <input type="text" id="title" name="title" value='{{$book->title}}'>
+    <input type="text" id="title" name="title" value='{{old('ISBN') ?? $book->title}}'>
     <br>
     <br>
     <label for="author">Author:</label>
-    <input type="text" id="author" name="author" value='{{$book->author}}'>
+    <input type="text" id="author" name="author" value='{{old('ISBN') ?? $book->author}}'>
     <br>
     <br>
     <label for="pages">Pages:</label>
-    <input type="text" id="pages" name="pages" value={{$book->pages}}>
+    <input type="text" id="pages" name="pages" value={{old('ISBN') ?? $book->pages}}>
     <br>
     <br>
     <label for="edition">Edition:</label>
-    <input type="text" id="edition" name="edition" value={{$book->edition}}>
+    <input type="text" id="edition" name="edition" value="{{old('ISBN') ?? $book->edition}}">
     <br>
     <br>
     <label for="publisher">Publisher</label>
-    <input type="text" id="publisher" name="publisher" value='{{$book->publisher}}'>
+    <input type="text" id="publisher" name="publisher" value='{{old('ISBN') ?? $book->publisher}}'>
     <br>
     <br>
     <button type="submit">Save</button>
