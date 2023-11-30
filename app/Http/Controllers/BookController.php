@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BookExample;
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class BookController extends Controller
 {
@@ -47,6 +49,8 @@ class BookController extends Controller
         $book->publisher = $request->publisher;
 
         $book->save();
+
+        Mail::to($request->user())->send(new BookExample($book));
 
         return redirect("/book");
     }

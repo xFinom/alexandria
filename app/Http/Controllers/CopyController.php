@@ -13,7 +13,7 @@ class CopyController extends Controller
      */
     public function index()
     {
-        return view('Copy.showAllCopies', ['copies' => Copy::all()]);
+        return view('Copy.showAllCopies', ['copies' => Copy::with('book:id,title')->get()]);
     }
 
     /**
