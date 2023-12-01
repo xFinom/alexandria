@@ -12,12 +12,12 @@ class BookFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array<string, mixed>ð
      */
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(),
+            'title' => fake()->sentence(3),
             'ISBN' => fake()->isbn13(),
             'edition' => fake()->randomDigit(),
             'author' => fake()->name(),

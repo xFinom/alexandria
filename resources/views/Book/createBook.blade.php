@@ -1,9 +1,9 @@
 <x-admin>
-    <h4
-        class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
+    <h2
+        class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
     >
         Register Book
-    </h4>
+    </h2>
     @if ($errors->any())
         <div
             class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs"
@@ -31,27 +31,27 @@
             <br>
             <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Title</span>
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" id="title" name="title" placeholder="title" value='{{old('ISBN')}}'>
+                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" id="title" name="title" placeholder="title" value='{{old('title')}}'>
             </label>
             <br>
             <label class="block text-sm" for="author">
                 <span class="text-gray-700 dark:text-gray-400">Author</span>
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" id="author" name="author" placeholder="author" value='{{old('ISBN')}}'>
+                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" id="author" name="author" placeholder="author" value='{{old('author')}}'>
             </label>
             <br>
             <label class="block text-sm" for="pages">
                 <span class="text-gray-700 dark:text-gray-400">Pages</span>
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" id="pages" name="pages" placeholder="pages" value={{old('ISBN')}}>
+                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" id="pages" name="pages" placeholder="pages" value={{old('pages')}}>
             </label>
             <br>
             <label class="block text-sm" for="edition">
                 <span class="text-gray-700 dark:text-gray-400">Edition</span>
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" id="edition" name="edition" placeholder="edition" value="{{old('ISBN')}}">
+                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" id="edition" name="edition" placeholder="edition" value="{{old('edition')}}">
             </label>
             <br>
             <label class="block text-sm" for="publisher">
                 <span class="text-gray-700 dark:text-gray-400">Publisher</span>
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" id="publisher" name="publisher" placeholder="publisher" value='{{old('ISBN')}}'>
+                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" id="publisher" name="publisher" placeholder="publisher" value='{{old('publisher')}}'>
             </label>
             <br>
 

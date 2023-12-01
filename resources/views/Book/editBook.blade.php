@@ -1,9 +1,9 @@
 <x-admin>
-    <h4
-        class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
+    <h2
+        class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-300"
     >
         Edit Book
-    </h4>
+    </h2>
     @if ($errors->any())
         <div
             class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs"

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('pages');
             $table->string('author');
             $table->string('publisher');
+            $table->string('image')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\BookExample;
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 
 class BookController extends Controller
@@ -14,6 +15,10 @@ class BookController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('isAdmin', auth()->user())) {
+            abort(403);
+        }
+
         return view('Book/showAllBooks', ['books' => Book::all()]);
     }
 
@@ -22,6 +27,10 @@ class BookController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('isAdmin', auth()->user())) {
+            abort(403);
+        }
+
         return view('Book/createBook');
     }
 
@@ -52,7 +61,7 @@ class BookController extends Controller
 
         Mail::to($request->user())->send(new BookExample($book));
 
-        return redirect("/book");
+        return redirect("/book")->with('success', 'Book Added');
     }
 
     /**
@@ -60,6 +69,10 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
+        if (!Gate::allows('isAdmin', auth()->user())) {
+            abort(403);
+        }
+
         return view('Book/showBook', ['book' => Book::find($book->id)]);
     }
 
@@ -68,6 +81,10 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
+        if (!Gate::allows('isAdmin', auth()->user())) {
+            abort(403);
+        }
+
         return view('Book/editBook', ['book' => Book::find($book->id)]);
     }
 
@@ -94,7 +111,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect()->route('book.index');
+        return redirect()->route('book.index')->with('success', 'Book Edited');
     }
 
     /**
@@ -104,6 +121,6 @@ class BookController extends Controller
     {
         $book->delete();
 
-        return redirect()->route('book.index');
+        return redirect()->route('book.index')->with('success', 'Book Deleted');
     }
 }
