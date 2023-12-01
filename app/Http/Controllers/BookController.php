@@ -46,6 +46,7 @@ class BookController extends Controller
             'pages' => 'required',
             'author' => 'required',
             'publisher' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $book = new Book();
@@ -56,6 +57,9 @@ class BookController extends Controller
         $book->pages = $request->pages;
         $book->edition = $request->edition;
         $book->publisher = $request->publisher;
+
+        $path = $request->file('image')->store('book', 'public');
+        $book->image = $path;
 
         $book->save();
 
@@ -100,6 +104,7 @@ class BookController extends Controller
             'pages' => 'required',
             'author' => 'required',
             'publisher' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $book->ISBN = $request->ISBN;
@@ -108,6 +113,11 @@ class BookController extends Controller
         $book->pages = $request->pages;
         $book->author = $request->author;
         $book->publisher = $request->publisher;
+
+        if($request->hasFile('image')) {
+            $path = $request->file('image')->store('book', 'public');
+            $book->image = $path;
+        }
 
         $book->save();
 
