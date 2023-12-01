@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\RentalCopy;
+use App\Models\BookInventory;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
@@ -8,6 +10,7 @@ use App\Http\Controllers\RentalCopyController;
 use App\Http\Controllers\UserRentalController;
 use App\Http\Controllers\UserPurchasesController;
 use App\Http\Controllers\StripeController;
+use App\Models\User;
 use App\Models\Book;
 
 /*
@@ -49,8 +52,12 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
+        $userCount = User::count();
+        $bookCount  = Book::count();
+        $copyCount = RentalCopy::count();
+        $inventoryCount = BookInventory::count();
 
-        $users = \App\Models\User::class->count();
-        return view('dashboard', ['users' => $users, ]);
+        return view('dashboard',['userCount' => $userCount,
+            'bookCount' => $bookCount, 'copyCount' => $copyCount, 'inventoryCount' =>$inventoryCount]);
     })->name('dashboard');
 });
